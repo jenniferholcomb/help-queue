@@ -24,10 +24,18 @@ class TicketControl extends React.Component {
                   formVisibleOnPage: false });
   }
 
+  handleCancelAddTicket = () => {
+    this.setState({ formVisibleOnPage: false });
+  }
+
   render() {
     return (
       <React.Fragment>
-        {this.state.formVisibleOnPage ? <NewTicketForm onNewTicketCreation={this.handleAddingNewTicketToList} /> : <TicketList ticketList={this.state.mainTicketList} /> }
+        <div className={'form-modal ' + (this.state.formVisibleOnPage ? 'visible' : '')}>
+          <NewTicketForm onNewTicketCreation={this.handleAddingNewTicketToList} onNewTicketCancel={this.handleCancelAddTicket} />
+        </div>
+        <TicketList ticketList={this.state.mainTicketList} />
+        {/* {this.state.formVisibleOnPage ? <NewTicketForm onNewTicketCreation={this.handleAddingNewTicketToList} /> : <TicketList ticketList={this.state.mainTicketList} /> } */}
         <button onClick={this.handleClick}>{this.state.formVisibleOnPage ? "Go back" : "Add ticket"}</button>
       </React.Fragment>
     );

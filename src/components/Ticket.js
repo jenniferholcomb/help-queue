@@ -2,11 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function Ticket(props) {
+  const ticketStyle = {
+    padding: '1rem',
+  }
   return (
     <React.Fragment>
-      <h3>{props.location} - {props.names}</h3>
-      <p><em>{props.issue}</em></p>
-      <hr />
+      <div style={ticketStyle} className="Ticket">
+        <h3>{props.location} - {props.names}</h3>
+        <p><em>{props.issue}</em></p>
+      </div>
     </React.Fragment>
   );
 }
